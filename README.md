@@ -1,2 +1,0 @@
-wordpress-project-boilerplate
-=============================

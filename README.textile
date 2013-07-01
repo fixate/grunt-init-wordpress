@@ -27,7 +27,7 @@ wordpress_remote
 wordpress_branch
 
 # branch should only checkout stable releases of WordPress from tags e.g.
-git checkout -b wordpress_branch wordpress_remote/3.5.2
+git checkout -b wordpress_branch 3.5.2
 </pre>
 
 h2. TODO

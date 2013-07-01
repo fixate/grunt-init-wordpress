@@ -1,2 +1,37 @@
-wordpress-project-boilerplate
-=============================
+h1. WordPress Project Boilerplate
+
+A boilerplate for beginning new WordPress projects quickly.
+
+Projects will be configured with the following:
+
+# latest stable version of WordPress
+# a "styleguide":http://github.com/larrybotha/styleguide
+# a theme "boilerplate":http://github.com/fixate/wordpress-theme-boilerplate
+# a Grunt template for configuring symlinks, folder names, and theme localisations
+
+h2. Remote Repos
+
+This project makes extensive use of git subtrees to track remote repos.
+
+h4. WordPress
+
+<pre>
+# git remote add wordpress_remote https://github.com/WordPress/WordPress
+# git fetch wordpress_remote
+# git fetch wordpress_remote --tags
+
+# remote tracking branch
+wordpress_remote
+
+# branch
+wordpress_branch
+
+# branch should only checkout stable releases of WordPress from tags e.g.
+git checkout -b wordpress_branch wordpress_remote/3.5.2
+</pre>
+
+h2. TODO
+
+# link remote stylegude
+# link remote theme
+# create and link Grunt template

@@ -23,7 +23,8 @@ Upstream changes should be merged using the following strategy:
 
 <pre>
 $ git checkout wordpress_branch
-$ git pull
+$ git fetch
+$ git merge --no-ff 3.5.3
 
 $ git checkout master
 $ git merge --squash -s subtree --no-commit wordpress_branch

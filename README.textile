@@ -1,2 +1,57 @@
-wordpress-project-boilerplate
-=============================
+h1. WordPress Project Boilerplate
+
+A boilerplate for beginning new WordPress projects quickly.
+
+Projects will be configured with the following:
+
+# latest stable version of WordPress
+# a "styleguide":http://github.com/larrybotha/styleguide
+# a theme "boilerplate":http://github.com/fixate/wordpress-theme-boilerplate
+# a Grunt template for configuring symlinks, folder names, and theme localisations
+
+h2. Remote Repos
+
+This project makes extensive use of git subtrees to track remote repos.
+
+Once a relevant branch for a remote has been created, it is then pulled into @master@. The following, for example, is used to pull WordPress in:
+
+<pre>
+$ git read-tree --prefix=src/ -u wordpress_branch
+</pre>
+
+Upstream changes should be merged using the following strategy:
+
+<pre>
+$ git checkout wordpress_branch
+$ git pull
+
+$ git checkout master
+$ git merge --squash -s subtree --no-commit wordpress_branch
+Squash commit -- not updating HEAD
+Automatic merge went well; stopped before committing as requested
+</pre>
+
+Information on using @subtree@ can be found at http://git-scm.com/book/en/Git-Tools-Subtree-Merging
+
+h4. WordPress
+
+<pre>
+# $ git remote add wordpress_remote https://github.com/WordPress/WordPress
+# $ git fetch wordpress_remote
+# $ git fetch wordpress_remote --tags
+
+# remote tracking branch
+wordpress_remote
+
+# branch
+wordpress_branch
+
+# branch should only checkout stable releases of WordPress from tags e.g.
+$ git checkout -b wordpress_branch 3.5.2
+</pre>
+
+h2. TODO
+
+# link remote stylegude
+# link remote theme
+# create and link Grunt template

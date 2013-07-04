@@ -1,0 +1,28 @@
+{
+  "name": "{%= theme_name %}",
+  "version": "{%= version %}",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-imageoptim": "~1.2.6"
+  },
+  "path": {
+    "scss": "src/wp-content/themes/{%= theme_name %}/css/sass",
+    "css" : "src/wp-content/themes/{%= theme_name %}/css",
+    "img" : "src/wp-content/themes/{%= theme_name %}/img",
+    "js"  : "src/wp-content/themes/{%= theme_name %}/js"
+  },
+  "props": {
+    "theme_name"  : "{%= theme_name %}",
+    "theme_local" : "{%= theme_local %}",
+    "title"       : "{%= title %}",
+    "version"     : "{%= version %}",
+    "author_name" : "{%= author_name %}",
+    "author_email": "{%= author_email %}",
+    "author_url"  : "{%= author_url %}"
+  }
+}

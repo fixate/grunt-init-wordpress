@@ -1,4 +1,5 @@
 {
+  "src/wp-content/theme/theme-name": "src/wp-content/theme/{%= theme_name %}",
   "src/wp-content/theme/{%= theme_name %}/!root/local-config-sample.php": "src/local-config-sample.php",
   "src/wp-content/theme/{%= theme_name %}/!root/local-config-sample.php": "src/local-config.php",
   "src/wp-content/theme/{%= theme_name %}/!root/wp-config.php": "src/wp-config.php"

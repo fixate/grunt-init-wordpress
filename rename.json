@@ -6,5 +6,5 @@
   "src/wp-content/themes/theme-name/!root/googlee1968eada4e4888a.html": "src/googlee1968eada4e4888a.html",
   "src/wp-content/themes/theme-name/.gitignore": false,
   "src/wp-content/themes/theme-name": "src/wp-content/themes/{%= theme_name %}",
-  "styleguide/css/**/*": "src/wp-content/themes/css/",
+  "styleguide/css/**/*": "src/wp-content/themes/css/"
 }

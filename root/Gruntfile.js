@@ -58,6 +58,15 @@
           }
         }
       },
+      // Rename folders
+      rename: {
+        main: {
+          files: [{
+            src: '<%= pkg.path.theme_parent %>/theme-name',
+            dest: '<%= pkg.path.theme_parent %>/<%= theme_name %>'
+          }]
+        }
+      },
       // Replace text in files
       replace: {
         text: {
@@ -135,10 +144,11 @@
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-imageoptim');
-    grunt.loadNpmTasks('grunt-replace');
+    grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-rename');
     grunt.loadNpmTasks('grunt-symlink');
 
-    grunt.registerTask('init-wordpress', ['replace', 'symlink']);
+    grunt.registerTask('init-wordpress', ['rename', 'replace', 'symlink']);
 
     grunt.registerTask('server', ['connect']);
 

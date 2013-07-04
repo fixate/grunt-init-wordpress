@@ -23,9 +23,11 @@ h2. Usage
 
 At the command-line, cd into an empty directory, run this command and follow the prompts.
 
-<pre>grunt-init gruntplugin</pre>
+<pre>grunt-init wordpress</pre>
 
 Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files.
+
+Once you are done with configuration, follow the instructions presented on completion of the template generation.
 
 h2. Remote Repos
 

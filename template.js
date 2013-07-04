@@ -53,7 +53,7 @@ exports.template = function(grunt, init, done) {
       default: ''
     },
     init.prompt('title'),
-    init.prompt('version'),
+    init.prompt('version', '1.0.0'),
     init.prompt('homepage'),
     init.prompt('author_name'),
     init.prompt('author_email'),

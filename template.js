@@ -66,7 +66,7 @@ exports.template = function(grunt, init, done) {
     var files = init.filesToCopy(props);
 
     // Actually copy (and process) files.
-    init.copyAndProcess(files, props, {noProcess: ['src/wp-includes/**/*', 'src/wp-admin/**/*', 'src/wp-content/plugins/**/*']});
+    init.copyAndProcess(files, props, {noProcess: ['src/wp-includes/**/*', 'src/wp-admin/**/*', 'src/wp-content/plugins/**/*', 'src/wp-content/themes/twenty-*/*']});
 
     // Generate pacakge.json file.
     // init.writePackageJSON('package.json', props);

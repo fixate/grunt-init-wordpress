@@ -42,14 +42,14 @@ exports.template = function(grunt, init, done) {
     // Prompt for these values.
     {
       name: 'theme_name',
-      message: 'Used for theme folder name.',
+      message: 'Theme folder name.',
       default: '',
       validator: /^[\w\-\.]+$/,
       warning: 'Must be only letters, numbers, dashes, dots or underscores.'
     },
     {
       name: 'theme_local',
-      message: 'Used for theme localisation.',
+      message: 'Theme localisation name.',
       default: 'Me',
       validator: /^[\w\-\.]+$/,
       warning: 'Must be only letters, numbers, dashes, dots or underscores.'

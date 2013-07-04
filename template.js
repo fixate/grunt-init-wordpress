@@ -16,12 +16,12 @@ exports.notes = '_Project name_ is used to localise the WordPress install.' +
   '\n\n'+
   '_Project title_ should be a human-readable title' +
   '\n\n'+
-  'You will need to run _npm install_, followed by _grunt init-wordpress_ ' +
+  'You will need to run *npm install*, followed by *grunt init-wp* ' +
   'to configure localisations, symlinks, and file and folder structures ' +
   'once this template has run.';
 
 // Template-specific notes to be displayed after question prompts.
-exports.after = '*** WordPress project installed! ***' +
+exports.after = '\*\*\* WordPress project installed! \*\*\*' +
   '\n\n' +
   'run _npm install_ to install dependencies. Then: ' +
   '\n\n' +

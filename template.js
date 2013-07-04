@@ -40,9 +40,21 @@ exports.template = function(grunt, init, done) {
 
   init.process({}, [
     // Prompt for these values.
-    init.prompt('name'),
+    {
+      name: 'theme_name',
+      message: 'Used for theme folder name.',
+      default: '',
+      validator: /^[\w\-\.]+$/,
+      warning: 'Must be only letters, numbers, dashes, dots or underscores.'
+    },
+    {
+      name: 'theme_local',
+      message: 'Used for theme localisation.',
+      default: 'Me',
+      validator: /^[\w\-\.]+$/,
+      warning: 'Must be only letters, numbers, dashes, dots or underscores.'
+    },
     init.prompt('title'),
-    init.prompt('description', ''),
     init.prompt('version'),
     init.prompt('homepage'),
     init.prompt('author_name'),
@@ -58,8 +70,8 @@ exports.template = function(grunt, init, done) {
     // Actually copy (and process) files.
     init.copyAndProcess(files, props, {noProcess: ['wp-includes/**', 'wp-admin/**', 'wp-content/plugins/**']});
 
-    // Generate jquery.json file.
-    init.writePackageJSON('package.json', props);
+    // Generate pacakge.json file.
+    // init.writePackageJSON('package.json', props);
 
     // All done!
     done();

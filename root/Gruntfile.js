@@ -147,7 +147,7 @@
     grunt.loadNpmTasks('grunt-file-regex-rename');
     grunt.loadNpmTasks('grunt-symlink');
 
-    grunt.registerTask('init-wordpress', ['rename', 'replace', 'symlink']);
+    grunt.registerTask('init-wordpress', ['fileregexrename', 'replace', 'symlink']);
 
     grunt.registerTask('server', ['connect']);
 

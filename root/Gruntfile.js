@@ -13,18 +13,18 @@
 
     grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
+      // Minify js
       uglify: {
         options: {
           banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
         },
-        dist: {
-          files: {
-            '<%= pkg.path.js %>/shared/ui.min.js': '<%= pkg.path.js %>/shared/ui.js'
-          }
+        files: {
+          '<%= pkg.path.js %>/main.min.js': ['<%= pkg.path.js %>/main.js']
         }
       },
+      // Run js through jshint
       jshint: {
-        files: ['gruntfile.js', 'static/styleguide/styleguide-js/main.js'],
+        files: ['gruntfile.js', 'styleguide/styleguide-js/main.js', '<%= pkg.path.js %>/main.js'],
         options: {
           globals: {
             jQuery: true,
@@ -34,17 +34,19 @@
           }
         }
       },
+      // Run a local server
       connect: {
         options: {
           port: 9000,
           hostname: '0.0.0.0',
-          base: 'static/styleguide',
+          base: 'styleguide',
           keepalive: true
         },
         middleware: function(connect, options) {
           return connect.static(options.base);
         }
       },
+      // Manage Sass compilation
       sass: {                              // Task
         dist: {                            // Target
           options: {
@@ -56,6 +58,47 @@
           }
         }
       },
+      // Replace text in files
+      replace: {
+        text: {
+          src: ['<%= pkg.path.theme %>/**/*.php', '<%= pkg.path.theme %>/**/*.scss'],             // source files array (supports minimatch)
+          overwrite: true,
+          replacements: [{
+            from: 'theme_name',
+            to: '{%= theme_name %}'
+          }, {
+            from: /Theme Name/g,
+            to: '{%= title %}'
+          }]
+        },
+        move: {
+          src: ['styleguide/css'],
+          dest: ['<%= pkg.path.theme %>']
+        }
+      },
+      // Create symlinks
+      symlink: {
+        css: {
+          dest: 'styleguide/style.css',
+          relativeSrc: '..<%= pkg.path.theme %>'
+        },
+        cssdir: {
+          dest: 'styleguide/css',
+          relativeSrc: '..<%= pkg.path.css %>',
+          options: {type: 'dir'} // 'file' by default
+        },
+        jsdir: {
+          dest: 'styleguide/js',
+          relativeSrc: '..<%= pkg.path.js %>',
+          options: {type: 'dir'} // 'file' by default
+        },
+        imgdir: {
+          dest: 'styleguide/img',
+          relativeSrc: '..<%= pkg.path.img %>',
+          options: {type: 'dir'} // 'file' by default
+        }
+      },
+      // Optimise images
       imageoptim: {
         files: [
           '<%= pkg.path.img %>'
@@ -69,6 +112,7 @@
           quitAfter: true
         }
       },
+      // Watch for changes to files
       watch: {
         gruntfile: {
           files: 'Gruntfile.js',
@@ -79,7 +123,7 @@
           tasks: ['sass']
         },
         styleguide: {
-          files: ['static/styleguide/styleguide-js/main.js'],
+          files: ['styleguide/styleguide-js/main.js', '<%= pkg.path.js %>/main.js'],
           tasks: ['jshint']
         }
       }
@@ -91,14 +135,18 @@
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-imageoptim');
+    grunt.loadNpmTasks('grunt-replace');
+    grunt.loadNpmTasks('grunt-symlink');
+
+    grunt.registerTask('init-wordpress', ['replace', 'symlink']);
+
+    grunt.registerTask('server', ['connect']);
 
     grunt.registerTask('test', ['sass', 'jshint']);
 
     grunt.registerTask('optim', ['imageoptim']);
 
     grunt.registerTask('default', ['sass', 'jshint', 'uglify']);
-
-    grunt.registerTask('server', ['connect']);
 
   };
 }());

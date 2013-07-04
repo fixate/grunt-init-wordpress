@@ -16,7 +16,7 @@ exports.notes = '_Project name_ is used to localise the WordPress install.' +
   '\n\n'+
   '_Project title_ should be a human-readable title' +
   '\n\n'+
-  'You will need to run _npm install_, followed by _grunt init_wordpress_ ' +
+  'You will need to run _npm install_, followed by _grunt init-wordpress_ ' +
   'to configure localisations, symlinks, and file and folder structures ' +
   'once this template has run.';
 

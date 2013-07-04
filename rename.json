@@ -1,6 +1,8 @@
 {
-  "src/wp-content/themes/theme-name/!root/*": "src/*",
-  // "src/wp-content/themes/theme-name/!root/*": "src/local-config-sample.php",
+  "src/wp-content/themes/theme-name/!root/wp-config.php": "src/humans.txt",
+  "src/wp-content/themes/theme-name/!root/wp-config.php": "src/local-config-sample.php",
   "src/wp-content/themes/theme-name/!root/wp-config.php": "src/wp-config.php",
+  "src/wp-content/themes/theme-name/!root/wp-config.php": "src/.htaccess",
+  "src/wp-content/themes/theme-name/!root/wp-config.php": "src/googlee1968eada4e4888a.html",
   "src/wp-content/themes/theme-name": "src/wp-content/themes/{%= theme_name %}"
 }

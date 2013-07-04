@@ -34,6 +34,7 @@ exports.after = '*** WordPress project installed! ***' +
 
 // Any existing file or directory matching this wildcard will cause a warning.
 exports.warnOn = '*';
+exports.warnOn = '[!*.png, !*.gif, !*.jpeg,]';
 
 // The actual init template.
 exports.template = function(grunt, init, done) {

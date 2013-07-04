@@ -64,11 +64,11 @@
           src: ['<%= pkg.path.theme %>/**/*.php', '<%= pkg.path.theme %>/**/*.scss'],             // source files array (supports minimatch)
           overwrite: true,
           replacements: [{
-            from: 'theme_name',
-            to: '{%= theme_name %}'
+            from: '/theme_name/g',
+            to: 'as'
           }, {
-            from: /Theme Name/g,
-            to: '{%= title %}'
+            from: /Theme_Name/g,
+            to: 'ds'
           }]
         },
         move: {

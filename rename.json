@@ -1,4 +1,6 @@
 {
-  "src/wp-content/themes/theme-name/!root/*": "src/",
-  "src/wp-content/themes/theme-name/": "src/wp-content/themes/{%= theme_name %}/"
+  "src/wp-content/themes/theme-name/!root/*": "src/*",
+  // "src/wp-content/themes/theme-name/!root/*": "src/local-config-sample.php",
+  "src/wp-content/themes/theme-name/!root/wp-config.php": "src/wp-config.php",
+  "src/wp-content/themes/theme-name": "src/wp-content/themes/{%= theme_name %}"
 }

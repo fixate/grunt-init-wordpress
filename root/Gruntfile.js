@@ -62,17 +62,46 @@
       copy: {
         init: {
           files: [
+            // Copy non-theme files to WordPress root
             {
-              src: ['path/*'],
-              dest: 'dest/',
-              filter: 'isFile'
-            }, // includes files in path
+              expand: true,
+              cwd: '<%= pkg.path.theme_parent %>/theme-name/!root',
+              src: ['**'],
+              dest: 'src'
+            },
+            // Create theme folder as per package.json
             {
-              src: ['path/**'],
-              dest: 'dest/'
-            } // includes files in path and its subdirs
+              expand: true,
+              cwd: '<%= pkg.path.theme_parent %>/theme-name',
+              src: ['**'],
+              dest: '<%= pkg.path.theme_parent %>/<%= pkg.props.theme_name %>'
+            },
+            // Copy styleguide css to theme
+            {
+              expand: true,
+              cwd: 'styleguide/css',
+              src: ['**'],
+              dest: '<%= pkg.path.theme %>/css'
+            },
+            // Copy fonts to theme
+            {
+              expand: true,
+              cwd: 'styleguide/fnt',
+              src: ['**'],
+              dest: '<%= pkg.path.theme %>/fnt'
+            }
           ]
         }
+      },
+      // Remove copied folders
+      clean: {
+        init: [
+          '<%= pkg.path.theme_parent %>/theme-name',
+          'styleguide/css',
+          'styleguide/fnt',
+          'styleguide/.gitignore',
+          'styleguide/.htaccess'
+          ]
       },
       // Replace text in files
       replace: {
@@ -81,10 +110,10 @@
           overwrite: true,
           replacements: [{
             from: '/theme_name/g',
-            to: 'as'
+            to: '<%= pkg.props.theme_name %>'
           }, {
-            from: /Theme_Name/g,
-            to: 'ds'
+            from: /Theme Name/g,
+            to: '<%= pkg.props.title %>'
           }]
         }
       },
@@ -109,9 +138,6 @@
           relativeSrc: '..<%= pkg.path.img %>',
           options: {type: 'dir'} // 'file' by default
         }
-      },
-      clean: {
-        init: ["<%= pkg.path.theme %>/.gitignore"]
       },
       // Optimise images
       imageoptim: {

@@ -99,22 +99,35 @@
           '<%= pkg.path.theme_parent %>/theme-name',
           'styleguide/css',
           'styleguide/fnt',
+          'styleguide/style.css',
           'styleguide/.gitignore',
           'styleguide/.htaccess'
           ]
       },
       // Replace text in files
-      replace: {
+      "regex-replace": {
         init: {
-          src: ['<%= pkg.path.theme %>/**/*.php', '<%= pkg.path.theme %>/**/*.scss'],             // source files array (supports minimatch)
-          overwrite: true,
-          replacements: [{
-            from: '/theme_name/g',
-            to: '<%= pkg.props.theme_name %>'
-          }, {
-            from: /Theme Name/g,
-            to: '<%= pkg.props.title %>'
-          }]
+          src: ['<%= pkg.path.theme %>/**/*.php', '<%= pkg.path.theme %>/css/style.scss'],
+          actions: [
+            {
+                name: 'localisations',
+                search: /theme_name/,
+                replace: '<%= pkg.props.theme_local %>',
+                flags: 'g'
+            },
+            {
+                name: 'theme name',
+                search: /Theme_Name/,
+                replace: '<%= pkg.props.theme_name %>',
+                flags: 'g'
+            },
+            {
+                name: 'theme title',
+                search: /Theme Name/,
+                replace: '<%= pkg.props.title %>',
+                flags: 'g'
+            }
+          ]
         }
       },
       // Create symlinks
@@ -176,12 +189,12 @@
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-imageoptim');
-    grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-regex-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-symlink');
 
-    grunt.registerTask('init-wp', ['copy', 'replace', 'symlink', 'clean']);
+    grunt.registerTask('init-wp', ['copy', 'clean', 'replace', 'symlink']);
 
     grunt.registerTask('server', ['connect']);
 

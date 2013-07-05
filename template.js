@@ -41,7 +41,7 @@ exports.template = function(grunt, init, done) {
   init.process({}, [
     // Prompt for these values.
     {
-      name: 'theme_name',
+      name: 'theme_folder',
       message: 'Theme folder name:',
       default: '',
       validator: /^[\w\-\.]+$/,

@@ -74,7 +74,7 @@
               expand: true,
               cwd: '<%= pkg.path.theme_parent %>/theme-name',
               src: ['**'],
-              dest: '<%= pkg.path.theme_parent %>/<%= pkg.props.theme_name %>'
+              dest: '<%= pkg.path.theme_parent %>/<%= pkg.props.theme_folder %>'
             },
             // Copy styleguide css to theme
             {
@@ -111,16 +111,16 @@
           overwrite: true,
           replacements: [{
             // theme localisation
-            from: /theme_name/g,
+            from: /theme_local/g,
             to: '<%= pkg.props.theme_local %>'
           },{
             // theme @subpackage
-            from: /theme name/g,
-            to: '<%= pkg.props.theme_name %>'
+            from: /theme_folder/g,
+            to: '<%= pkg.props.theme_folder %>'
           },{
             // theme name
-            from: /Theme Name/g,
-            to: '<%= pkg.props.title %>'
+            from: /Theme_Name/g,
+            to: '<%= pkg.props.theme_name %>'
           }]
         }
       },

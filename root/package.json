@@ -23,12 +23,14 @@
     "theme_parent": "src/wp-content/themes"
   },
   "props": {
-    "theme_name"  : "{%= theme_name %}",
-    "theme_local" : "{%= theme_local %}",
-    "title"       : "{%= title %}",
-    "version"     : "{%= version %}",
-    "author_name" : "{%= author_name %}",
-    "author_email": "{%= author_email %}",
-    "author_url"  : "{%= author_url %}"
+    "theme_folder" : "{%= theme_folder %}",
+    "theme_local"  : "{%= theme_local %}",
+    "theme_url"    : "{%= homepage %}",
+    "theme_version": "{%= version %}",
+    "theme_name"   : "{%= title %}",
+    "version"      : "{%= version %}",
+    "author_name"  : "{%= author_name %}",
+    "author_email" : "{%= author_email %}",
+    "author_url"   : "{%= author_url %}"
   }
 }

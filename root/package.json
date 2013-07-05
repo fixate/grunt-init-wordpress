@@ -1,5 +1,5 @@
 {
-  "name": "{%= theme_name %}",
+  "name": "{%= theme_folder %}",
   "version": "{%= version %}",
   "devDependencies": {
     "grunt": "~0.4.1",

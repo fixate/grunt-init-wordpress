@@ -21,11 +21,11 @@ exports.notes = '_Project name_ is used to localise the WordPress install.' +
   'once this template has run.';
 
 // Template-specific notes to be displayed after question prompts.
-exports.after = '\*\*\* WordPress project installed! \*\*\*' +
+exports.after = '*** WordPress project installed! ***' +
   '\n\n' +
-  'run _npm install_ to install dependencies. Then: ' +
+  'run *npm install* to install dependencies. Then: ' +
   '\n\n' +
-  'run  _grunt init-wp_  to configure your WordPress install.' +
+  'run *grunt init-wp* to configure your WordPress install.' +
   '\n\n' +
   'For more information about installing and configuring Grunt, please see ' +
   'the Getting Started guide:' +
@@ -51,7 +51,7 @@ exports.template = function(grunt, init, done) {
       name: 'theme_local',
       message: 'Theme localisation name:',
       validator: /^[\w\-\.]+$/,
-        warning: 'Must be only letters, numbers, dashes, dots or underscores.',
+      warning: 'Must be only letters, numbers, dashes, dots or underscores.',
       default: 'my_theme'
     },
     init.prompt('title', 'My Theme'),

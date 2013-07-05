@@ -105,29 +105,23 @@
           ]
       },
       // Replace text in files
-      "regex-replace": {
-        init: {
-          src: ['<%= pkg.path.theme %>/**/*.php', '<%= pkg.path.theme %>/css/style.scss'],
-          actions: [
-            {
-                name: 'localisations',
-                search: /theme_name/,
-                replace: '<%= pkg.props.theme_local %>',
-                flags: 'g'
-            },
-            {
-                name: 'theme name',
-                search: /Theme_Name/,
-                replace: '<%= pkg.props.theme_name %>',
-                flags: 'g'
-            },
-            {
-                name: 'theme title',
-                search: /Theme Name/,
-                replace: '<%= pkg.props.title %>',
-                flags: 'g'
-            }
-          ]
+      replace: {
+        example: {
+          src: ['<%= pkg.path.theme %>/**/*.php', '<%= pkg.path.scss %>/style.scss'],
+          overwrite: true,
+          replacements: [{
+            // theme localisation
+            from: /theme_name/g,
+            to: '<%= pkg.props.theme_local %>'
+          },{
+            // theme @subpackage
+            from: /theme name/g,
+            to: '<%= pkg.props.theme_name %>'
+          },{
+            // theme name
+            from: /Theme Name/g,
+            to: '<%= pkg.props.title %>'
+          }]
         }
       },
       // Create symlinks
@@ -189,7 +183,7 @@
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-imageoptim');
-    grunt.loadNpmTasks('grunt-regex-replace');
+    grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-symlink');

@@ -15,11 +15,11 @@
     "grunt-symlink": "~0.4.0"
   },
   "path": {
-    "scss"        : "src/wp-content/themes/{%= theme_name %}/css/sass",
-    "css"         : "src/wp-content/themes/{%= theme_name %}/css",
-    "img"         : "src/wp-content/themes/{%= theme_name %}/img",
-    "js"          : "src/wp-content/themes/{%= theme_name %}/js",
-    "theme"       : "src/wp-content/themes/{%= theme_name %}",
+    "scss"        : "src/wp-content/themes/{%= theme_folder %}/css/sass",
+    "css"         : "src/wp-content/themes/{%= theme_folder %}/css",
+    "img"         : "src/wp-content/themes/{%= theme_folder %}/img",
+    "js"          : "src/wp-content/themes/{%= theme_folder %}/js",
+    "theme"       : "src/wp-content/themes/{%= theme_folder %}",
     "theme_parent": "src/wp-content/themes"
   },
   "props": {

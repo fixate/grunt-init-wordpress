@@ -47,14 +47,14 @@
         }
       },
       // Manage Sass compilation
-      sass: {                              // Task
-        dist: {                            // Target
+      sass: {
+        dist: {
           options: {
             quiet: false,
             cacheLocation: '<%= pkg.path.scss %>/.sass-cache'
           },
-          files: {                         // Dictionary of files
-            '<%= pkg.path.css %>/style.css': '<%= pkg.path.scss %>/style.scss'       // 'destination': 'source'
+          files: {
+            '<%= pkg.path.theme %>/style.css': '<%= pkg.path.scss %>/style.scss'
           }
         }
       },

@@ -25,7 +25,7 @@ exports.after = '\*\*\* WordPress project installed! \*\*\*' +
   '\n\n' +
   'run _npm install_ to install dependencies. Then: ' +
   '\n\n' +
-  'run _grunt init_wordpress_ to configure your WordPress install.' +
+  'run  _grunt init-wp_  to configure your WordPress install.' +
   '\n\n' +
   'For more information about installing and configuring Grunt, please see ' +
   'the Getting Started guide:' +

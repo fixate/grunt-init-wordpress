@@ -58,9 +58,25 @@
           }
         }
       },
+      // Move files and folders to their respective folders
+      copy: {
+        init: {
+          files: [
+            {
+              src: ['path/*'],
+              dest: 'dest/',
+              filter: 'isFile'
+            }, // includes files in path
+            {
+              src: ['path/**'],
+              dest: 'dest/'
+            } // includes files in path and its subdirs
+          ]
+        }
+      },
       // Replace text in files
       replace: {
-        text: {
+        init: {
           src: ['<%= pkg.path.theme %>/**/*.php', '<%= pkg.path.theme %>/**/*.scss'],             // source files array (supports minimatch)
           overwrite: true,
           replacements: [{
@@ -70,10 +86,6 @@
             from: /Theme_Name/g,
             to: 'ds'
           }]
-        },
-        move: {
-          src: ['styleguide/css'],
-          dest: ['<%= pkg.path.theme %>']
         }
       },
       // Create symlinks
@@ -97,6 +109,9 @@
           relativeSrc: '..<%= pkg.path.img %>',
           options: {type: 'dir'} // 'file' by default
         }
+      },
+      clean: {
+        init: ["<%= pkg.path.theme %>/.gitignore"]
       },
       // Optimise images
       imageoptim: {
@@ -136,9 +151,11 @@
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-imageoptim');
     grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-symlink');
 
-    grunt.registerTask('init-wp', ['replace', 'symlink']);
+    grunt.registerTask('init-wp', ['copy', 'replace', 'symlink', 'clean']);
 
     grunt.registerTask('server', ['connect']);
 

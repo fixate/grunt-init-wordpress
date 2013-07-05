@@ -43,16 +43,18 @@ exports.template = function(grunt, init, done) {
     {
       name: 'theme_folder',
       message: 'Theme folder name:',
-      default: '',
       validator: /^[\w\-\.]+$/,
-      warning: 'Must be only letters, numbers, dashes, dots or underscores.'
+      warning: 'Must be only letters, numbers, dashes, dots or underscores.',
+      default: 'my-theme'
     },
     {
       name: 'theme_local',
       message: 'Theme localisation name:',
-      default: ''
+      validator: /^[\w\-\.]+$/,
+        warning: 'Must be only letters, numbers, dashes, dots or underscores.',
+      default: 'my_theme'
     },
-    init.prompt('title'),
+    init.prompt('title', 'My Theme'),
     init.prompt('version', '1.0.0'),
     init.prompt('homepage'),
     init.prompt('author_name'),

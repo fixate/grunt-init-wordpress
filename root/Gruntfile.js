@@ -160,6 +160,22 @@
           quitAfter: true
         }
       },
+      // Optimise SVG's
+      svgmin: {
+        options: {
+          plugins: [{
+            removeViewBox: false
+          }]
+        },
+        dist: {
+          files: [{
+              expand: true,
+              cwd: '<%= pkg.path.img %>',
+              src: ['**/*.svg'],
+              dest: '<%= pkg.path.img %>'
+          }]
+        }
+      },
       // Watch for changes to files
       watch: {
         gruntfile: {
@@ -183,6 +199,7 @@
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-imageoptim');
+    grunt.loadNpmTasks('grunt-svgmin');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -194,7 +211,7 @@
 
     grunt.registerTask('test', ['sass', 'jshint']);
 
-    grunt.registerTask('optim', ['imageoptim']);
+    grunt.registerTask('optim', ['imageoptim', 'svgmin']);
 
     grunt.registerTask('default', ['sass', 'jshint', 'uglify']);
 

@@ -15,13 +15,11 @@
       pkg: grunt.file.readJSON('package.json'),
       // Minify js
       uglify: {
-        options: {
-          banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-        },
-        my_target: {
-          files: {
-            '<%= pkg.path.js %>/main.min.js': ['<%= pkg.path.js %>/main.js']
-          }
+        dist: {
+          options: {
+            banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+          },
+          files: { '<%= pkg.path.js %>/main.min.js': ['<%= pkg.path.js %>/main.js'] }
         }
       },
       // Run js through jshint

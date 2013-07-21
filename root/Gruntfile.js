@@ -11,8 +11,23 @@
   'use strict';
   module.exports = function(grunt) {
 
+    var pkg = grunt.file.readJSON('package.json');
+
+    // Load dependancies
+    var dep, dependencies, _i, _len;
+
+    dependencies = Object.keys(pkg.devDependencies).filter(function(o) {
+      return (/^grunt-.+/).test(o);
+    });
+
+    for (_i = 0, _len = dependencies.length; _i < _len; _i++) {
+      dep = dependencies[_i];
+      grunt.loadNpmTasks(dep);
+    }
+
     grunt.initConfig({
-      pkg: grunt.file.readJSON('package.json'),
+
+      pkg: pkg,
       // Minify js
       uglify: {
         dist: {
@@ -192,18 +207,6 @@
         }
       }
     });
-
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-imageoptim');
-    grunt.loadNpmTasks('grunt-svgmin');
-    grunt.loadNpmTasks('grunt-text-replace');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-symlink');
 
     grunt.registerTask('init-wp', ['copy', 'clean', 'replace', 'symlink']);
 

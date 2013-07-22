@@ -9,7 +9,7 @@ Projects will be configured with the following:
 # a theme "boilerplate":http://github.com/fixate/wordpress-theme-boilerplate
 # a Grunt template for configuring symlinks, folder names, and theme localisations
 
-h2. Installation 
+h2. Installation
 
 If you haven't already done so, install grunt-init.
 
